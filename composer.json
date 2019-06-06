@@ -1,0 +1,21 @@
+{
+    "name": "root/terceiros",
+    "description": "Sisnet MVC",
+    "type": "project",
+    "require": {
+        "twig/twig": "^2.10",
+        "mustache/mustache": "^2.12"
+    },
+    "require-dev": {
+        "doctrine/inflector": "^1.3",
+        "psr/container": "^1.0",
+        "illuminate/database": "^5.8",
+        "illuminate/support": "^5.8"
+    },
+    "authors": [
+        {
+            "name": "Carlos Bughi",
+            "email": "bughi@univali.br"
+        }
+    ]
+}
