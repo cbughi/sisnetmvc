@@ -1,4 +1,5 @@
 <?php
+
 use br\univali\sisnet\mvc\nucleo\Controlador;
 use br\univali\sisnet\mvc\nucleo\RespostaJson;
 use br\univali\sisnet\mvc\nucleo\RespostaTwig;
@@ -6,10 +7,12 @@ use br\univali\sisnet\mvc\nucleo\RespostaTwig;
 /**
  * @author 1978233
  */
-class Cliente extends Controlador{
-    
-    public function listarClientes(){
-        if ($this->requisicao->obterParametro("nome") == 'maria'){
+class Cliente extends Controlador
+{
+
+    public function listarClientes()
+    {
+        if ($this->requisicao->obterParametro("nome") == 'maria') {
             return new Redirecionamento("http://www.univali.br");
         }
         $clientes[] = "joao";

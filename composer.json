@@ -4,7 +4,8 @@
     "type": "project",
     "require": {
         "twig/twig": "^2.10",
-        "mustache/mustache": "^2.12"
+        "mustache/mustache": "^2.12",
+        "splitbrain/php-cli": "^1.1"
     },
     "require-dev": {
         "doctrine/inflector": "^1.3",
