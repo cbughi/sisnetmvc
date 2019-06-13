@@ -2,6 +2,7 @@
 spl_autoload_register(function ($class) {
     $basedirs[] = '/app/controlador/';
     $basedirs[] = '/app/dominio/';
+    $basedirs[] = '/bin/';
 
     foreach($basedirs as $base_dir) {
         $file = __DIR__.$base_dir . str_replace('\\', '/', $class) . '.php';
@@ -11,6 +12,7 @@ spl_autoload_register(function ($class) {
         }
     }
 });
+
 
 spl_autoload_register(function ($class) {
     $prefix = 'br\\univali\\sisnet\\mvc\\nucleo';
