@@ -1,4 +1,5 @@
 <?php
+
 namespace br\univali\sisnet\mvc\nucleo\padroes;
 
 class Singleton
@@ -13,7 +14,7 @@ class Singleton
     public static function getInstance()
     {
         static $instance = null;
-        
+
         if (null === $instance) {
             $instance = new static();
         }

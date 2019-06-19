@@ -1,23 +1,10 @@
 <?php
 
-echo "Are you sure you want to do this?  Type 'yes' to continue: ";
-$handle = fopen("php://stdin", "r");
-$line = fgets($handle);
-
-if (trim($line) != 'yes') {
-    echo "ABORTING!\n";
-    exit;
-}
-echo "\n";
-echo "Thank you, continuing...\n";
-exit;
-
 error_reporting(E_ALL);
 ini_set('display_errors', 'On');
 
 session_start();
 
-require_once('./../autoload.php');
 require_once('./../vendor/autoload.php');
 require_once('./../app/config.php');
 
@@ -27,12 +14,11 @@ $configuracao = br\univali\sisnet\mvc\nucleo\Configuracao::getInstance();
  * Eloquent configuration
  */
 
-//try{
-//    $db = $configuracao->obterParametro('database');
-//} catch(\Exception $ex){
-$db = $configuracao->obterParametro('db');
-
-//}
+try {
+    $db = $configuracao->obterParametro('database');
+} catch (\Exception $ex) {
+    $db = $configuracao->obterParametro('db');
+}
 
 use Illuminate\Database\Capsule\Manager as Capsule;
 
@@ -70,14 +56,8 @@ br\univali\sisnet\mvc\nucleo\RespostaTwig::$motorTwig = new Twig_Environment(
 ));
 
 try {
-    $fachada = new br\univali\sisnet\mvc\nucleo\ControladorDeFachada();
+    $fachada = new \br\univali\sisnet\mvc\nucleo\ControladorDeFachada();
     $resposta = $fachada->processaRequisicao();
 } catch (Exception $ex) {
     echo $ex->getMessage();
 }
-
-
-
-
-
-

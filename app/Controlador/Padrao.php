@@ -1,34 +1,33 @@
 <?php
 
+namespace App\Controlador;
+
 use br\univali\sisnet\mvc\nucleo\Controlador;
 use br\univali\sisnet\mvc\nucleo\RespostaTwig;
 use br\univali\sisnet\mvc\nucleo\RespostaMustache;
 use br\univali\sisnet\mvc\nucleo\Resposta;
 use br\univali\sisnet\mvc\nucleo\Requisicao;
 
-/**
- * Description of Padrao
- *
- * @author 1978233
- */
 class Padrao extends Controlador
 {
 
     public function index()
     {
-        /*
-        $user = Usuario::Create(
-                ['login' => "ze da silva",
-                    'nome' => "kshitij206@gmail.com",    
-                    'senha' => password_hash("1234",PASSWORD_BCRYPT)
-                ]
+
+        $user = \App\Dominio\Usuario::Create(
+            [
+                'login' => "ze da silva",
+                'nome' => "kshitij206@gmail.com",
+                'senha' => password_hash("1234", PASSWORD_BCRYPT)
+            ]
         );
-        */
+
         return new Resposta("ola mamae");
     }
 
     public function teste()
     {
+
         return new RespostaMustache("cadastro.mustache", array(
                 'titulo' => $this->configuracao->obterParametro('titulo')
             )

@@ -1,12 +1,11 @@
 <?php
 
+namespace App\Controlador;
+
 use br\univali\sisnet\mvc\nucleo\Controlador;
 use br\univali\sisnet\mvc\nucleo\RespostaJson;
 use br\univali\sisnet\mvc\nucleo\RespostaTwig;
 
-/**
- * @author 1978233
- */
 class Cliente extends Controlador
 {
 
