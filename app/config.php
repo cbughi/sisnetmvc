@@ -10,6 +10,11 @@ $rotas->adicionarRota(Requisicao::GET, "/teste", "Padrao", "index");
 $rotas->adicionarRota(Requisicao::POST, "/teste/cadastrar", "Padrao", "cadastrar");
 $rotas->adicionarRota(Requisicao::GET, "/restrito/clientes", "Cliente", "listarClientes");
 
+//Rotas de login
+$rotas->adicionarRota(Requisicao::GET, "/auth", "Login", "index");
+$rotas->adicionarRota(Requisicao::POST, "/auth", "Login", "entrar");
+$rotas->adicionarRota(Requisicao::GET, "/auth/sair", "Login", "sair");
+
 $parametros['db.driver'] = 'pgsql';
 $parametros['db.host'] = 'localhost';
 $parametros['db.port'] = '5432';

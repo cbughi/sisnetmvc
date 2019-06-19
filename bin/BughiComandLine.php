@@ -11,7 +11,7 @@ use splitbrain\phpcli\Options;
 
 use \br\univali\sisnet\mvc\nucleo\Configuracao;
 
-class BughiConfig extends CLI
+class BughiComandLine extends CLI
 {
 
     private $configuracao;
@@ -74,7 +74,8 @@ class BughiConfig extends CLI
         }
 
     }
+
 }
 
-$cli = new BughiConfig();
+$cli = new BughiComandLine();
 $cli->run();

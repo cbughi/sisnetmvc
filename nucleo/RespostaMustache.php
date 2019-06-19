@@ -2,8 +2,6 @@
 
 namespace br\univali\sisnet\mvc\nucleo;
 
-use mysql_xdevapi\Exception;
-
 class RespostaMustache extends Resposta
 {
 
