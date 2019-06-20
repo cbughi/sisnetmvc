@@ -9,10 +9,16 @@ class Configuracao extends Singleton
 
     private $parametros;
     private $rota;
+    private $filtros;
 
     public function parametros($parametros)
     {
         $this->parametros = $parametros;
+    }
+
+    public function filtros($filtros)
+    {
+        $this->filtros = $filtros;
     }
 
     public function rotas($rota)
@@ -59,6 +65,10 @@ class Configuracao extends Singleton
     public function listarRotar()
     {
         return $this->rota->listarRotar();
+    }
+
+    public function obterConfiguradorFiltro():ConfiguradorFiltro{
+        return $this->filtros;
     }
 
 }

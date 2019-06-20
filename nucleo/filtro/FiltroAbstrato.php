@@ -5,9 +5,16 @@ namespace br\univali\sisnet\mvc\nucleo\filtro;
 
 use br\univali\sisnet\mvc\nucleo\Requisicao;
 
-interface FiltroAbstrato
+abstract class FiltroAbstrato
 {
-    public function filtrar(Requisicao $requisicao, array $parametros);
+    private $proximo;
 
-    public function filtrarProximo(FiltroAbstrato $filtroAbstrato);
+    public function definirProximo(FiltroAbstrato $proximo){
+        $this->proximo = $proximo;
+    }
+
+    public abstract function filtrar(Requisicao $requisicao);
+    public function obterProximo(){
+        return $this->proximo;
+    }
 }
