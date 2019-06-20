@@ -74,7 +74,6 @@ class BughiComandLine extends CLI
         }
 
     }
-
 }
 
 $cli = new BughiComandLine();
