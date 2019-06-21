@@ -2,7 +2,7 @@
 
 namespace br\univali\sisnet\mvc\nucleo;
 
-use br\univali\sisnet\mvc\nucleo\padroes\Singleton;
+use br\univali\sisnet\mvc\nucleo\Padroes\Singleton;
 
 class Cabecalho extends Singleton
 {

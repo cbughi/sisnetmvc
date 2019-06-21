@@ -1,6 +1,6 @@
 <?php
 
-namespace br\univali\sisnet\mvc\nucleo\padroes;
+namespace br\univali\sisnet\mvc\nucleo\Padroes;
 
 class Singleton
 {
