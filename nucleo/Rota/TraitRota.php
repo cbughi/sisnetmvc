@@ -13,6 +13,11 @@ trait TraitRota
         $this->parametros = $parametros;
     }
 
+    public function filtros($filtros)
+    {
+        $this->filtros = $filtros;
+    }
+
     public function rotas($rota)
     {
         $this->rota = $rota;
@@ -57,6 +62,10 @@ trait TraitRota
     public function listarRotar()
     {
         return $this->rota->listarRotar();
+    }
+
+    public function obterConfiguradorFiltro():ConfiguradorFiltro{
+        return $this->filtros;
     }
 
 }
