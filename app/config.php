@@ -3,6 +3,12 @@
 use br\univali\sisnet\mvc\nucleo\Configuracao;
 use br\univali\sisnet\mvc\nucleo\GerenciadorRota;
 use br\univali\sisnet\mvc\nucleo\Requisicao;
+use br\univali\sisnet\mvc\nucleo\ConfiguradorFiltro;
+
+$configurador = new ConfiguradorFiltro();
+$configurador->adicionarFiltro('GET','/teste','App\Controlador\FiltroTeste1');
+$configurador->adicionarFiltro('GET','/teste','App\Controlador\FiltroTeste2');
+$configurador->adicionarFiltro('GET','/teste','App\Controlador\FiltroTeste1');
 
 $rotas = new GerenciadorRota();
 $rotas->adicionarRota(Requisicao::GET, "", "Padrao", "index");
@@ -27,6 +33,9 @@ $parametros['debug'] = true;
 
 $parametros['template.cache'] = __DIR__ . '/../cache';
 
+/** @var Configuracao $configuracao */
 $configuracao = Configuracao::getInstance();
 $configuracao->rotas($rotas);
 $configuracao->parametros($parametros);
+$configuracao->filtros($configurador);
+
