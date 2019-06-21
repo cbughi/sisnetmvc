@@ -2,10 +2,14 @@
 
 namespace br\univali\sisnet\mvc\nucleo;
 
+use br\univali\sisnet\mvc\nucleo\ComandLine\ContratoComando;
 use br\univali\sisnet\mvc\nucleo\padroes\Singleton;
+use br\univali\sisnet\mvc\nucleo\ComandLine\TraitConfiguracaoComando;
 
 class Configuracao extends Singleton
 {
+
+    use TraitConfiguracaoComando;
 
     private $parametros;
     private $rota;
