@@ -34,6 +34,13 @@ class ControladorDeFachada
 
         $acao = $this->configuracao->buscarRota($rota, $metodo);
 
+
+        $filtroInicial = $this->configuracao->obterConfiguradorFiltro()->buscarFiltro($rota,$metodo);
+
+        if ($filtroInicial != null){
+            $filtroInicial->filtrar($requisicao);
+        }
+
         $classeControlador = "\\App\\Controlador\\" . $acao['controlador'];
         $metodoAcao = $acao['acao'];
 
