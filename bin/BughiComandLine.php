@@ -3,18 +3,23 @@
 namespace Bin;
 
 require __DIR__ . '/../vendor/autoload.php';
-require_once('./../app/config.php');
+require_once(__DIR__ . './../app/config.php');
 
+use br\univali\sisnet\mvc\nucleo\ComandLine\ContratoComando;
 use splitbrain\phpcli\CLI;
 use splitbrain\phpcli\Colors;
 use splitbrain\phpcli\Options;
 
 use \br\univali\sisnet\mvc\nucleo\Configuracao;
 
+use br\univali\sisnet\mvc\nucleo\ComandLine\comandos\VersaoComando;
+use br\univali\sisnet\mvc\nucleo\ComandLine\comandos\ListarRotasComando;
+
 class BughiComandLine extends CLI
 {
 
     private $configuracao;
+    private $comandos;
 
     protected function registerDefaultOptions()
     {
@@ -42,35 +47,29 @@ class BughiComandLine extends CLI
         
         \n - Douglas Duarte \n - Cauê \n - Keony \n - Cristian \n - Paulo");
 
-        $options->registerOption('versao', 'mostra versão', 'v');
-        $options->registerOption('criarControlador', 'Cria um novo controlador', 'c');
-        $options->registerOption('mostrarRotas', 'Mostrar rotas do sistema', 'r');
+        $this->configuracao->adicionarComando(new VersaoComando());
+        $this->configuracao->adicionarComando(new ListarRotasComando());
+
+        $this->comandos = $this->configuracao->obterComandos();
+
+        foreach ($this->comandos as $key => $value) {
+            $options->registerOption($key, $value['descricao'], $value['parametroCurto']);
+        }
 
     }
 
     protected function main(Options $options)
     {
 
-        if ($options->getOpt('versao')) {
+        $opcoesSelecionadas = $options->getOpt();
 
-            $this->info('1.0.0');
-
-        } elseif ($options->getOpt('mostrarRotas')) {
-
-            $this->notice(str_pad('URL', 40, " ", STR_PAD_RIGHT) . " | " . str_pad('METODO', 15, " ", STR_PAD_RIGHT) . " | " . str_pad('CONTROLADOR', 15, " ", STR_PAD_RIGHT) . " | " . str_pad('AÇÃO', 15, " ", STR_PAD_RIGHT));
-            foreach ($this->configuracao->listarRotar() as $rota) {
-
-                $url = str_pad($rota['url'], 40, " ", STR_PAD_RIGHT);
-                $metodo = str_pad($rota['metodo'], 15, " ", STR_PAD_RIGHT);
-                $controlador = str_pad($rota['controlador'], 15, " ", STR_PAD_RIGHT);
-                $acao = str_pad($rota['acao'], 15, " ", STR_PAD_RIGHT);
-
-                $this->notice($url . " | " . $metodo . " | " . $controlador . " | " . $acao);
-
-            }
-
-        } else {
+        if (empty($opcoesSelecionadas) || isset($opcoesSelecionadas['ajuda'])) {
             echo $options->help();
+            exit;
+        }
+
+        foreach ($opcoesSelecionadas as $key => $value) {
+            $this->comandos[$key]['comando']->executar($this);
         }
 
     }
