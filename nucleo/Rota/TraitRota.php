@@ -64,8 +64,8 @@ trait TraitRota
         return $this->rota->listarRotar();
     }
 
-    public function obterConfiguradorFiltro():ConfiguradorFiltro{
-        return $this->filtros;
-    }
+//    public function obterConfiguradorFiltro():ConfiguradorFiltro{
+//        return $this->filtros;
+//    }
 
 }

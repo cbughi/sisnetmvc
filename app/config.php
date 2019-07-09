@@ -3,21 +3,23 @@
 use br\univali\sisnet\mvc\nucleo\Configuracao;
 use br\univali\sisnet\mvc\nucleo\GerenciadorRota;
 use br\univali\sisnet\mvc\nucleo\Requisicao;
-use br\univali\sisnet\mvc\nucleo\ConfiguradorFiltro;
+//use br\univali\sisnet\mvc\nucleo\ConfiguradorFiltro;
 
-$configurador = new ConfiguradorFiltro();
-$configurador->adicionarFiltro('GET','/teste','App\Controlador\FiltroTeste1');
-$configurador->adicionarFiltro('GET','/teste','App\Controlador\FiltroTeste2');
-$configurador->adicionarFiltro('GET','/teste','App\Controlador\FiltroTeste1');
+//$configurador = new ConfiguradorFiltro();
+//$configurador->adicionarFiltro('GET','/teste','App\Controlador\FiltroTeste1');
+//$configurador->adicionarFiltro('GET','/teste','App\Controlador\FiltroTeste2');
+//$configurador->adicionarFiltro('GET','/teste','App\Controlador\FiltroTeste1');
 
 $rotas = new GerenciadorRota();
-$rotas->adicionarRota(Requisicao::GET, "", "Padrao", "index");
-$rotas->adicionarRota(Requisicao::GET, "/teste", "Padrao", "index");
-$rotas->adicionarRota(Requisicao::POST, "/teste/cadastrar", "Padrao", "cadastrar");
-$rotas->adicionarRota(Requisicao::GET, "/restrito/clientes", "Cliente", "listarClientes");
+//$rotas->adicionarRota(Requisicao::GET, "", "Padrao", "index");
+$rotas->adicionarRota(Requisicao::GET, "/cad-produto", "ProdutoControlador", "index");
+$rotas->adicionarRota(Requisicao::GET, "/cad-produto/novo", "ProdutoControlador", "novo");
+
+
+$rotas->adicionarRota(Requisicao::GET, "/cad-produto-teste", "ProdutoControlador", "teste");
 
 //Rotas de login
-$rotas->adicionarRota(Requisicao::GET, "/auth", "Login", "index");
+$rotas->adicionarRota(Requisicao::GET, "/", "Login", "index");
 $rotas->adicionarRota(Requisicao::POST, "/auth", "Login", "entrar");
 $rotas->adicionarRota(Requisicao::GET, "/auth/sair", "Login", "sair");
 
@@ -37,5 +39,5 @@ $parametros['template.cache'] = __DIR__ . '/../cache';
 $configuracao = Configuracao::getInstance();
 $configuracao->rotas($rotas);
 $configuracao->parametros($parametros);
-$configuracao->filtros($configurador);
+//$configuracao->filtros($configurador);
 

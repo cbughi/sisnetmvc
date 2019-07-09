@@ -13,15 +13,6 @@ class Padrao extends Controlador
 
     public function index()
     {
-
-        $user = \App\Dominio\Usuario::Create(
-            [
-                'login' => "ze da silva",
-                'nome' => "kshitij206@gmail.com",
-                'senha' => password_hash("1234", PASSWORD_BCRYPT)
-            ]
-        );
-
         return new Resposta("ola mamae");
     }
 

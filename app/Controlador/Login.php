@@ -27,7 +27,10 @@ class Login extends Controlador
         //        );
 
         if (!empty($_SESSION['usuario']['login'])) {
-            return new RespostaJson('usuario ja esta logado');
+
+            return new Redirecionamento("/cad-produto");
+
+//            return new RespostaJson('usuario ja esta logado');
         }
 
         $configuracaoMustache = [
@@ -51,7 +54,7 @@ class Login extends Controlador
             $_SESSION['usuario']['nome'] = $usuario->nome;
             $_SESSION['usuario']['login'] = $usuario->login;
 
-            return new RespostaJson(true);
+            return new Redirecionamento("/cad-produto");
 
         } else {
             return new RespostaJson('login incorreto');
@@ -62,7 +65,7 @@ class Login extends Controlador
     public function sair()
     {
         session_destroy();
-        return new Redirecionamento("/auth");
+        return new Redirecionamento("/");
     }
 
 }
